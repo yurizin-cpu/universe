@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap');
+
+
+:root {
+
+    --space: #020008;
+    --deep-space: #050014;
+
+    --purple: #7b2cff;
+    --violet: #b347ff;
+
+    --pink: #ff2f92;
+    --rose: #ff6bc7;
+
+    --blue: #4d7cff;
+
+    --white: #ffffff;
+
+    --letter-love: 150px;
+
+    --perspective: 1200px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body {
+    background: var(--space);
+    color: white;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* =========================================================
+   UNIVERSO
+========================================================= */
+
+.universe {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    perspective: var(--perspective);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(104, 35, 170, .15),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(75, 30, 160, .12),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 30, 150, .08),
+            transparent 30%
+        ),
+
+        #020008;
+}
+
+
+/* =========================================================
+   ESTRELAS
+========================================================= */
+
+.stars {
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            1px 1px at 20px 30px,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 100px 120px,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 250px 80px,
+            white,
+            transparent
+        ),
+
+        radial-gradient(
+            1px 1px at 400px 200px,
+            white,
+            transparent
+        );
+
+    background-size:
+        300px 300px,
+        500px 500px,
+        700px 700px,
+        900px 900px;
+
+    opacity: .65;
+
+    animation: starMove 60s linear infinite;
+}
+
+
+@keyframes starMove {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   PARTICULAS JS
+========================================================= */
+
+#space {
+
+    position: absolute;
+
+    inset: 0;
+
+    transform-style: preserve-3d;
+
+    pointer-events: none;
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 10px rgba(255,255,255,.5);
+
+    animation:
+        starFloat var(--duration) ease-in-out infinite alternate;
+}
+
+
+@keyframes starFloat {
+
+    from {
+        opacity: .2;
+        transform: translateZ(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateZ(100px);
+    }
+}
+
+
+/* =========================================================
+   NEBULOSAS
+========================================================= */
+
+.nebula {
+
+    position: absolute;
+
+    width: 70vw;
+    height: 70vw;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    pointer-events: none;
+
+    opacity: .25;
+}
+
+
+.nebula-one {
+
+    top: -30%;
+    left: -20%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(117, 40, 255, .8),
+            transparent 65%
+        );
+
+    animation: nebulaOne 20s ease-in-out infinite alternate;
+}
+
+
+.nebula-two {
+
+    right: -25%;
+    bottom: -30%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 30, 150, .7),
+            transparent 65%
+        );
+
+    animation: nebulaTwo 25s ease-in-out infinite alternate;
+}
+
+
+@keyframes nebulaOne {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(100px, 80px) scale(1.2);
+    }
+}
+
+
+@keyframes nebulaTwo {
+
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+
+    to {
+        transform: translate(-100px, -60px) scale(1.3);
+    }
+}
+
+
+/* =========================================================
+   SISTEMA CENTRAL
+========================================================= */
+
+.love-system {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 500px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(var(--mouse-x))
+        rotateY(var(--mouse-y));
+
+    transform-style: preserve-3d;
+
+    transition: transform .15s ease-out;
+}
+
+
+/* =========================================================
+   ORBITAS
+========================================================= */
+
+.orbit {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    border-radius: 50%;
+
+    transform-style: preserve-3d;
+}
+
+
+.orbit-one {
+
+    width: 430px;
+    height: 180px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(65deg)
+        rotateZ(15deg);
+
+    animation:
+        orbitOne 15s linear infinite;
+}
+
+
+.orbit-two {
+
+    width: 350px;
+    height: 350px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateX(70deg)
+        rotateY(20deg);
+
+    animation:
+        orbitTwo 20s linear infinite reverse;
+}
+
+
+.orbit-three {
+
+    width: 460px;
+    height: 460px;
+
+    transform:
+        translate(-50%, -50%)
+        rotateY(70deg);
+
+    animation:
+        orbitThree 25s linear infinite;
+}
+
+
+@keyframes orbitOne {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(65deg)
+            rotateZ(360deg);
+    }
+}
+
+
+@keyframes orbitTwo {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(70deg)
+            rotateY(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(70deg)
+            rotateY(360deg);
+    }
+}
+
+
+@keyframes orbitThree {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateY(70deg)
+            rotateZ(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateY(70deg)
+            rotateZ(360deg);
+    }
+}
+
+
+/* =========================================================
+   CORAÇÃO
+========================================================= */
+
+.heart {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        translateZ(40px);
+
+    font-size: 13rem;
+
+    color: var(--pink);
+
+    text-shadow:
+
+        0 0 10px var(--pink),
+        0 0 30px var(--pink),
+        0 0 70px var(--rose),
+        0 0 120px var(--purple);
+
+    animation:
+        heartbeat 2s ease-in-out infinite;
+
+    z-index: 1;
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            translate(-50%, -50%)
+            translateZ(40px)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(-50%, -50%)
+            translateZ(80px)
+            scale(1.12);
+
+    }
+}
+
+
+/* =========================================================
+   TEXTO PRINCIPAL
+========================================================= */
+
+.Love_You {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 90%;
+
+    height: var(--letter-love);
+
+    transform:
+        translate(-50%, -50%)
+        translateZ(130px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transform-style: preserve-3d;
+
+    z-index: 5;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   I LOVE YOU
+========================================================= */
+
+.love-main {
+
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(3rem, 8vw, 6rem);
+
+    font-weight: 500;
+
+    letter-spacing: .08em;
+
+    color: white;
+
+    text-shadow:
+
+        0 0 5px white,
+        0 0 15px var(--rose),
+        0 0 35px var(--pink),
+        0 0 70px var(--purple);
+
+    animation:
+        textGlow 3s ease-in-out infinite alternate;
+}
+
+
+@keyframes textGlow {
+
+    from {
+
+        text-shadow:
+
+            0 0 5px white,
+            0 0 15px var(--rose),
+            0 0 30px var(--pink);
+
+    }
+
+    to {
+
+        text-shadow:
+
+            0 0 10px white,
+            0 0 30px var(--rose),
+            0 0 60px var(--pink),
+            0 0 100px var(--purple);
+
+    }
+}
+
+
+/* =========================================================
+   SUBTITULO
+========================================================= */
+
+.love-sub {
+
+    margin-top: 15px;
+
+    font-size: .85rem;
+
+    letter-spacing: .45em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.7);
+
+    text-shadow:
+        0 0 10px var(--pink);
+
+    animation:
+        subtitleFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes subtitleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: .65;
+    }
+
+    50% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MENSAGEM
+========================================================= */
+
+.message {
+
+    position: absolute;
+
+    bottom: 8%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: .75rem;
+
+    letter-spacing: .1em;
+
+    line-height: 1.8;
+
+    animation:
+        messageAppear 3s ease forwards;
+}
+
+
+.message span {
+
+    color: var(--pink);
+
+    font-size: 1.5rem;
+
+    text-shadow:
+        0 0 15px var(--pink);
+}
+
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+        transform:
+            translate(-50%, 20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform:
+            translate(-50%, 0);
+
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .love-system {
+
+        width: 360px;
+        height: 360px;
+
+    }
+
+
+    .orbit-one {
+        width: 310px;
+        height: 130px;
+    }
+
+
+    .orbit-two {
+        width: 280px;
+        height: 280px;
+    }
+
+
+    .orbit-three {
+        width: 330px;
+        height: 330px;
+    }
+
+
+    .heart {
+        font-size: 9rem;
+    }
+
+
+    .love-sub {
+
+        font-size: .55rem;
+
+        letter-spacing: .3em;
+
+    }
+
+
+    .message {
+
+        width: 90%;
+
+        gap: 10px;
+
+        font-size: .65rem;
+
+    }
+
+
+/* =========================================================
+   ATMOSFERA ROMÂNTICA
+========================================================= */
+
+.romance-vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 90;
+    background:
+        radial-gradient(circle at 50% 48%, transparent 20%, rgba(0,0,0,.18) 62%, rgba(0,0,0,.62) 100%);
+}
+
+.romance-glow {
+    position: fixed;
+    width: 45vw;
+    height: 45vw;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(90px);
+    opacity: .12;
+    z-index: 1;
+}
+
+.romance-glow-one {
+    top: 15%;
+    left: -15%;
+    background: radial-gradient(circle, var(--pink), transparent 68%);
+    animation: romanceGlowOne 14s ease-in-out infinite alternate;
+}
+
+.romance-glow-two {
+    right: -15%;
+    bottom: 5%;
+    background: radial-gradient(circle, var(--purple), transparent 68%);
+    animation: romanceGlowTwo 17s ease-in-out infinite alternate;
+}
+
+@keyframes romanceGlowOne {
+    from { transform: translate3d(0, 0, 0) scale(.9); }
+    to   { transform: translate3d(90px, 50px, 0) scale(1.25); }
+}
+
+@keyframes romanceGlowTwo {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to   { transform: translate3d(-80px, -60px, 0) scale(1.3); }
+}
+
+/* =========================================================
+   CHUVA 3D DE AMOR
+========================================================= */
+
+#love-rain {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    z-index: 100;
+}
+
+.love-fall {
+    position: absolute;
+    top: -130px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    white-space: nowrap;
+    will-change: transform, opacity;
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+    text-shadow:
+        0 0 5px rgba(255,255,255,.9),
+        0 0 10px #ff4fa3,
+        0 0 22px #ff168b,
+        0 0 42px #a52cff;
+    animation:
+        loveFall3D var(--fall-time) linear forwards,
+        loveGlow var(--glow-time) ease-in-out infinite alternate;
+    opacity: var(--opacity);
+    transform-style: preserve-3d;
+}
+
+.love-heart {
+    color: #ff277f;
+    font-family: Arial, sans-serif;
+    font-size: var(--size);
+}
+
+.love-text {
+    color: rgba(255,255,255,.95);
+    font-size: var(--size);
+    letter-spacing: .12em;
+}
+
+.love-text::after {
+    content: "";
+    position: absolute;
+    inset: -12px -18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,47,146,.22), transparent 68%);
+    filter: blur(8px);
+    z-index: -1;
+}
+
+.love-trail {
+    position: absolute;
+    width: var(--trail-size);
+    height: var(--trail-size);
+    border-radius: 50%;
+    background: rgba(255, 105, 190, .9);
+    box-shadow:
+        0 0 5px white,
+        0 0 12px #ff4fa3,
+        0 0 22px #ff168b;
+    pointer-events: none;
+    animation: trailFade var(--trail-time) ease-out forwards;
+}
+
+@keyframes loveFall3D {
+    0% {
+        transform:
+            translate3d(0, -130px, var(--depth))
+            rotate(var(--rotation))
+            scale(var(--scale));
+        opacity: 0;
+    }
+
+    8% {
+        opacity: var(--opacity);
+    }
+
+    30% {
+        transform:
+            translate3d(var(--sway-a), 30vh, var(--depth))
+            rotate(calc(var(--rotation) + 80deg))
+            scale(var(--scale));
+    }
+
+    58% {
+        transform:
+            translate3d(var(--sway-b), 62vh, var(--depth))
+            rotate(calc(var(--rotation) + 190deg))
+            scale(var(--scale));
+    }
+
+    100% {
+        transform:
+            translate3d(var(--sway-c), 116vh, var(--depth))
+            rotate(calc(var(--rotation) + 360deg))
+            scale(var(--scale));
+        opacity: 0;
+    }
+}
+
+@keyframes loveGlow {
+    from {
+        filter: brightness(.65);
+    }
+    to {
+        filter: brightness(1.45);
+    }
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: .9;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(.05);
+    }
+}
+
+/* =========================================================
+   PARTÍCULAS ROMÂNTICAS
+========================================================= */
+
+#love-sparkles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 101;
+}
+
+.love-spark {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: white;
+    box-shadow:
+        0 0 5px white,
+        0 0 12px #ff4fa3,
+        0 0 22px #a52cff;
+    animation: sparkFloat var(--spark-time) ease-in-out infinite;
+    opacity: 0;
+}
+
+@keyframes sparkFloat {
+    0% {
+        transform: translate3d(0, 30px, 0) scale(.2);
+        opacity: 0;
+    }
+
+    25% {
+        opacity: .9;
+    }
+
+    75% {
+        opacity: .5;
+    }
+
+    100% {
+        transform: translate3d(var(--spark-x), -120px, 0) scale(1.4);
+        opacity: 0;
+    }
+}
+
+/* Celular: mais leve, mas ainda com profundidade */
+@media (max-width: 600px) {
+    .love-text {
+        font-size: 13px;
+        letter-spacing: .08em;
+    }
+
+    .romance-glow {
+        width: 70vw;
+        height: 70vw;
+        filter: blur(70px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .love-fall,
+    .love-spark,
+    .romance-glow {
+        animation-duration: 12s;
+    }
+}
